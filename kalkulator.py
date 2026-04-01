@@ -3,24 +3,31 @@ print("--- Witaj w Kalkulatorku! ---")
 
 # Pobieranie danych od użytkownika (input zawsze zwraca tekst, więc zmieniamy go na liczbę float)
 a = float(input("Podaj pierwszą liczbę: "))
-b = float(input("Podaj drugą liczbę: "))
 
-print("Wybierz działanie: +, -, *, /")
+
+print("Wybierz działanie: +, -, *, /, **, p")
 dzialanie = input("Twój wybór: ")
 
 # Logika kalkulatora
-if dzialanie == "+":
-    wynik = a + b
-elif dzialanie == "-":
-    wynik = a - b
-elif dzialanie == "*":
-    wynik = a * b
-elif dzialanie == "/":
-    if b != 0:
-        wynik = a / b
+if dzialanie == "p":
+    if a >= 0:
+        wynik = a ** 0.5
     else:
-        wynik = "Błąd! Nie dziel przez zero."
+        wynik = "Błąd! Nie podnosź do zera."
 else:
-    wynik = "Nieznane działanie"
-
+    # Tylko jeżeli nie wybrano pierwiastka pytaj o drugą zmienną
+    b = float(input("Podaj drugą liczbę: "))
+    if dzialanie == "+":
+        wynik = a + b
+    elif dzialanie == "-":
+        wynik = a - b
+    elif dzialanie == "*":
+        wynik = a * b
+    elif dzialanie == "/":
+        wynik = a / b if b != 0 else "Błąd! Nie dziel przez zero."
+    
+    elif dzialanie == "**":
+        wynik = a ** b
+    
+2
 print(f"Wynik: {wynik}")
