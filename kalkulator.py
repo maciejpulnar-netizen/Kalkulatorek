@@ -11,8 +11,16 @@ while True:
     if dzialanie.lower() == 'x':
         print("Dzięki za korzystanie z kalkulatora! Do widzenia.")
         break
-
-    a = float(input("Podaj pierwszą liczbę: "))
+    
+    if dzialanie == 'x':
+        print("Dzięki za korzystanie z kalkulatora! Do widzenia.")
+        break
+    #Sprawdzam czy uzytkownmik wpisuje liczbę czy litere
+    try:
+        a = float(input("Podaj liczbę (lub promień r): "))
+    except ValueError:
+        print("Błąd! To nie jest poprawna liczba. Spróbuj jeszcze raz.")
+        continue # Przeskakuje do początku pętli while
 
     if dzialanie == "p":
         if a >= 0:
@@ -24,7 +32,12 @@ while True:
         wynik = math.pi * (a ** 2)
         print(f"Użyta wartość Pi: {math.pi}")
     else:
-        b = float(input("Podaj drugą liczbę: "))
+        #Sprawdzam czy uzytkownmik wpisuje drugą liczbę czy litere
+        try:
+            b = float(input("Podaj liczbę (lub promień r): "))
+        except ValueError:
+            print("Błąd! To nie jest poprawna liczba. Spróbuj jeszcze raz.")
+            continue # Przeskakuje do początku pętli while
         
         if dzialanie == "+":
             wynik = a + b
@@ -39,4 +52,4 @@ while True:
         else:
             wynik = "Nieznane działanie"
 
-    print(f"Wynik: {wynik}")
+    print(f"Wynik: {wynik: .2f}")
