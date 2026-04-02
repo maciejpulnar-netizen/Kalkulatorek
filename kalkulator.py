@@ -12,33 +12,38 @@ while True:
         print("Dzięki za korzystanie z kalkulatora! Do widzenia.")
         break
     
-    if dzialanie == 'x':
-        print("Dzięki za korzystanie z kalkulatora! Do widzenia.")
-        break
-    #Sprawdzam czy uzytkownmik wpisuje liczbę czy litere
-    try:
-        a = float(input("Podaj liczbę (lub promień r): "))
-    except ValueError:
-        print("Błąd! To nie jest poprawna liczba. Spróbuj jeszcze raz.")
-        continue # Przeskakuje do początku pętli while
-
+ 
+    #Sprawdzam jakie działanie wpisane    
     if dzialanie == "p":
-        if a >= 0:
-            wynik = math.sqrt(a)    
-        else:
-            wynik = "Błąd! Liczba ujemna."
-    elif dzialanie == "k":
-        # Wzór na pole koła: Pi * r^2
-        wynik = math.pi * (a ** 2)
-        print(f"Użyta wartość Pi: {math.pi}")
-    else:
-        #Sprawdzam czy uzytkownmik wpisuje drugą liczbę czy litere
         try:
-            b = float(input("Podaj liczbę (lub promień r): "))
+            a = float(input("Podaj liczbę do pierwiastkowania: "))
+            if a >= 0:
+                wynik = math.sqrt(a)
+            else:
+                wynik = "Błąd! Liczba ujemna."
         except ValueError:
-            print("Błąd! To nie jest poprawna liczba. Spróbuj jeszcze raz.")
-            continue # Przeskakuje do początku pętli while
-        
+            print("To nie jest liczba! Kolejna próba")
+        continue
+
+    elif dzialanie == "k":
+        try:
+            a = float(input("Podaj promień koła (r): "))
+            wynik = math.pi * (a ** 2)
+            print(f"Użyta wartość Pi:  {math.pi:.2f}")
+            print(f"Wynik: {wynik: .2f}")
+        except ValueError:
+            print("To nie jest liczba! Kolejna próba")
+        continue
+
+    else:
+        # Dla pozostałych działań (+, -, *, /, **)
+        try:
+            a = float(input("Podaj pierwszą liczbę: "))
+            b = float(input("Podaj drugą liczbę: "))
+        except ValueError:
+            print("To nie jest liczba! Kolejna próba")
+            continue
+
         if dzialanie == "+":
             wynik = a + b
         elif dzialanie == "-":
