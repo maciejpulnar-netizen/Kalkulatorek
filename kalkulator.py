@@ -29,5 +29,5 @@ else:
     elif dzialanie == "**":
         wynik = a ** b
     
-2
+
 print(f"Wynik: {wynik}")
