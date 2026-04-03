@@ -19,6 +19,7 @@ while True:
             a = float(input("Podaj liczbę do pierwiastkowania: "))
             if a >= 0:
                 wynik = math.sqrt(a)
+                print(f"Wynik: {wynik} ")
             else:
                 wynik = "Błąd! Liczba ujemna."
         except ValueError:
