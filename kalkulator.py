@@ -19,6 +19,7 @@ while True:
             a = float(input("Podaj liczbę do pierwiastkowania: "))
             if a >= 0:
                 wynik = math.sqrt(a)
+                print(f"Wynik: {wynik: .2f} ")
             else:
                 wynik = "Błąd! Liczba ujemna."
         except ValueError:
@@ -58,21 +59,25 @@ while True:
         try:
             a = float(input("Podaj pierwszą liczbę: "))
             b = float(input("Podaj drugą liczbę: "))
+        
+
+            if dzialanie == "+":
+                wynik = a + b
+            elif dzialanie == "-":
+                wynik = a - b
+            elif dzialanie == "*":
+                wynik = a * b
+            elif dzialanie == "/":
+                wynik = a / b if b != 0 else "Nie dziel przez zero!"
+            elif dzialanie == "**":
+                wynik = a ** b        
+            else:
+                wynik = "Nieznane działanie"
         except ValueError:
             print("To nie jest liczba! Kolejna próba")
             continue
 
-        if dzialanie == "+":
-            wynik = a + b
-        elif dzialanie == "-":
-            wynik = a - b
-        elif dzialanie == "*":
-            wynik = a * b
-        elif dzialanie == "/":
-            wynik = a / b if b != 0 else "Nie dziel przez zero!"
-        elif dzialanie == "**":
-            wynik = a ** b        
-        else:
-            wynik = "Nieznane działanie"
-
-    print(f"Wynik: {wynik: .2f}")
+    if isinstance(wynik, (int, float)):
+        print(f"Wynik: {wynik:.2f}")
+    else:
+        print(f"Wynik: {wynik}")
